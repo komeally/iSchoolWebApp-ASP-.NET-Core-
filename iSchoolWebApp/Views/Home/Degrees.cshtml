@@ -1,0 +1,68 @@
+﻿@model iSchoolWebApp.Models.DegreesRootModel
+
+@{
+    ViewData["Title"] = "Degrees";
+}
+
+<main>
+    <h1 class="title">Our Degrees</h1>
+    <div class="undergrad">
+        <h3>Undergrad</h3>
+        <div id="ugAccordion">
+            @foreach (var degree in Model.undergraduate)
+            {
+                <h3>@(degree.title + " (" + degree.degreeName.ToUpper() + ")")</h3>
+                <div>
+                    <p>@degree.description</p>
+                    <h4>Concentrations:</h4>
+                    <ul class="list-group">
+                        @for (int i = 0; i < degree.concentrations.Count; i++) 
+                        {
+                          <li class="list-group-item">@degree.concentrations[i]</li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="graduate">
+        <h3>Graduate</h3>
+        <ul id="gradAccordion" class="accordionjs">
+            @foreach (var degree in Model.graduate)
+            {
+                if(degree.title != null)
+                {   
+                    <li>
+                        <div>@(degree.title + " (" + degree.degreeName.ToUpper() + ")")</div>
+                        <div>
+                            <p>@degree.description</p>
+                            <h4>Concentrations:</h4>
+                            <ul class="list-group">
+                                @for (int i = 0; i < degree.concentrations.Count; i++)
+                                {
+                                    <li class="list-group-item">@degree.concentrations[i]</li>
+                                }
+                            </ul>
+                        </div>
+                    </li>
+                    
+                }
+                else
+                {
+                   <li>
+                       <div>@degree.degreeName</div>
+                       <div>
+                            <ul class="list-group">
+                                @for (int i = 0; i < degree.availableCertificates.Count; i++)
+                                {
+                                    <li class="list-group-item">@degree.availableCertificates[i]</li>
+                                }
+                            </ul>
+                       </div>
+                   </li>
+                }
+                
+            }
+        </ul>
+    </div>
+</main>

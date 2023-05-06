@@ -1,0 +1,63 @@
+﻿@model iSchoolWebApp.Models.EmploymentRootModel
+
+@{
+    ViewData["Title"] = "Employment";
+}
+
+<main>
+    <h1 class="title">Employment Information</h1>
+    <h4 class="subTitle">@Model.introduction.title</h4>
+    <div style="margin-bottom: 4em" class="coop">
+        <h5>@Model.introduction.content[1].title</h5>
+        <p>@Model.introduction.content[1].description</p>
+        <table id="coopTable" class="display">
+            <thead>
+                <tr>
+                    <th>Employer</th>
+                    <th>Degree</th>
+                    <th>City</th>
+                    <th>Term</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var employer in Model.coopTable.coopInformation)
+                {
+                    <tr>
+                        <td>@employer.employer</td>
+                        <td>@employer.degree</td>
+                        <td>@employer.city</td>
+                        <td>@employer.term</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="employment">
+        <h5>@Model.introduction.content[0].title</h5>
+        <p>@Model.introduction.content[0].description</p>
+        <table id="employmentTable" class="display">
+            <thead>
+                <tr>
+                    <th>Employer</th>
+                    <th>Degree</th>
+                    <th>City</th>
+                    <th>Title</th>
+                    <th>Start Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employer in Model.employmentTable.professionalEmploymentInformation)
+                {
+                    <tr>
+                        <td>@employer.employer</td>
+                        <td>@employer.degree</td>
+                        <td>@employer.city</td>
+                        <td>@employer.title</td>
+                        <td>@employer.startDate</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</main>
+

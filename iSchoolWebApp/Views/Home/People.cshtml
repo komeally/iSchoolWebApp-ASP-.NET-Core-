@@ -1,0 +1,49 @@
+﻿@model iSchoolWebApp.Models.PeopleRootModel
+
+@{
+    ViewData["Title"] = "People";
+}
+
+<h1 class="title">@Model.title</h1>
+<h5 class="subTitle">@Model.subTitle</h5>
+
+<div id="PeopleTab">
+    <ul>
+        <li><a href="#faculty">Faculty</a></li>
+        <li><a href="#staff">Staff</a></li>
+    </ul>
+    <div id="faculty">
+        @foreach (var faculty in Model.faculty)
+        {
+            <div class="person">
+                <img src="@faculty.imagePath" alt="pic" />
+                <h3>@faculty.name</h3>
+                <h3>@faculty.title</h3>
+                <h3>@faculty.office</h3>
+                <h3>@faculty.phone</h3>
+                <h3>@faculty.email</h3>
+                @if (faculty.website != "")
+                {
+                    <h3><a href="@faculty.website" target="_blank">My Site</a></h3>
+                }
+            </div>
+        }
+    </div>
+    <div id="staff">
+        @foreach (var staff in Model.staff)
+        {
+            <div class="person">
+                <img src="@staff.imagePath" alt="pic" />
+                <h3>@staff.name</h3>
+                <h3>@staff.title</h3>
+                <h3>@staff.office</h3>
+                <h3>@staff.phone</h3>
+                <h3>@staff.email</h3>
+                @if (staff.website != "")
+                {
+                    <h3><a href="@staff.website" target="_blank">My Site</a></h3>
+                }
+            </div>
+        }
+    </div>
+</div>

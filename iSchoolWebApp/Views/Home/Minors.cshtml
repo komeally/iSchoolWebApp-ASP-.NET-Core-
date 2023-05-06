@@ -1,0 +1,70 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Minors";
+}
+
+<main>
+    <h2 class="title">Our Minors</h2>
+    <div class="minors">
+        <p>
+            @foreach (var minor in Model.Minors.UgMinors)
+            {
+                <button type="button"
+                        class="btn btn-outline-dark"
+                        data-bs-toggle="collapse"
+                        data-bs-target=@("#" + minor.name)
+                        aria-expanded="false"
+                        aria-controls=@minor.name>
+                    @minor.name
+                </button>
+            }
+        </p>
+        @foreach (var minor in Model.Minors.UgMinors)
+        {
+            <div class="collapse" id=@minor.name>
+                <div class="card text-center">
+                    <div class="card-header">
+                        @minor.name
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@minor.title</h5>
+                        <p class="card-text">@minor.description</p>
+                        <p>
+                            @foreach(var course in minor.courses)
+                            {
+                                <button type="button"
+                                        class="btn btn-secondary btn-sm courseBtn"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target=@("#" + course)
+                                        aria-expanded="false"
+                                        aria-controls=@course>
+                                    @course
+                                </button>
+                            }
+                        </p>
+                        @foreach(var course in minor.courses)
+                        {
+                            foreach(var program in Model.Course){
+                                if(program.courseID == course)
+                                {
+                                    <div class="collapse course" id=@course>
+                                        <div class="card text-center">
+                                            <div class="card-body">
+                                                <h5 class="card-title">@(course + " " + program.title)</h5>
+                                                <p class="card-text">@program.description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        <span style="font-size: smaller">@minor.note</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</main>

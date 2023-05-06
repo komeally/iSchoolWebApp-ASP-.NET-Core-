@@ -1,0 +1,53 @@
+html {
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.title {
+    margin-bottom: 25px;
+}
+
+.subTitle {
+    margin-bottom: 3em;
+}
+
+/* Kasim new rules */
+.about {
+    padding: 2.5%;
+    margin: 4.5%;
+    border: solid 5px orange;
+    text-align: center;
+}
+
+.person {
+    min-height: 260px;
+    width: 200px;
+    display: inline-table;
+}
+
+.person h3 {
+    font-size: small;
+}
+
+person > img {
+    max-height: 200px
+}
+
+.undergraduate, .graduate{
+    padding: 5em;
+}
